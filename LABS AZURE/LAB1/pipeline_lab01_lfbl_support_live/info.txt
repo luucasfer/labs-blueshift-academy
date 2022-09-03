@@ -1,0 +1,6 @@
+selected resource name:		pipeline_lab01_lfbl
+selected resource type:		pipeline
+factory name:			df-estudos
+factory location:		eastus
+subscription id:		f9090f81-02bc-45d2-89d2-9bfe48adf4a3
+time of download (UTC):		Thu, 07 Jul 2022 15:33:05 GMT

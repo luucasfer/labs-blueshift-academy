@@ -1,0 +1,19 @@
+{
+    "name": "Parquet66",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureBlobStorage110",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Parquet",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "container": "lucas-fb-lima"
+            },
+            "compressionCodec": "snappy"
+        },
+        "schema": []
+    }
+}

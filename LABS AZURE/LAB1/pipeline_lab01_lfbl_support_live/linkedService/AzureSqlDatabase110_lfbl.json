@@ -1,0 +1,20 @@
+{
+    "name": "AzureSqlDatabase110_lfbl",
+    "properties": {
+        "annotations": [],
+        "type": "AzureSqlDatabase",
+        "typeProperties": {
+            "connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=sql-estudo.database.windows.net;Initial Catalog=db-estudos",
+            "servicePrincipalId": "5068a50a-7c30-4123-aabb-368c62e1c1a8",
+            "servicePrincipalKey": {
+                "type": "AzureKeyVaultSecret",
+                "store": {
+                    "referenceName": "AzureSql",
+                    "type": "LinkedServiceReference"
+                },
+                "secretName": "user-principal-sql02"
+            },
+            "tenant": "b4920c82-7581-491a-9dab-cd2ade2f3ebd"
+        }
+    }
+}

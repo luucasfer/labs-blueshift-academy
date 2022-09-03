@@ -1,0 +1,21 @@
+{
+    "name": "DelimitedText89",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "HttpServer48_lfbl",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "HttpServerLocation"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": []
+    }
+}

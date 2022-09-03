@@ -1,0 +1,29 @@
+{
+    "name": "AzureSqlTable158_lfbl",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureSqlDatabase110_lfbl",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlTable",
+        "schema": [
+            {
+                "name": "cotacaoCompra",
+                "type": "varchar"
+            },
+            {
+                "name": "cotacaoVenda",
+                "type": "varchar"
+            },
+            {
+                "name": "dataHoraCotacao",
+                "type": "varchar"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dolar_lucas_fb_lima",
+            "table": "dolar_Stage_lucas_fb_lima"
+        }
+    }
+}

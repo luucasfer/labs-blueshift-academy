@@ -1,0 +1,33 @@
+{
+    "name": "AzureSqlTable158",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureSqlDatabase110_lfbl",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlTable",
+        "schema": [
+            {
+                "name": "cotacaoCompra",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "cotacaoVenda",
+                "type": "float",
+                "precision": 15
+            },
+            {
+                "name": "dataHoraCotacao",
+                "type": "datetime",
+                "precision": 23,
+                "scale": 3
+            }
+        ],
+        "typeProperties": {
+            "schema": "dolar_lucas_fb_lima",
+            "table": "dolar_final_lucas_fb_lima"
+        }
+    }
+}

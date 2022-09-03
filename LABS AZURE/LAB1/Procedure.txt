@@ -1,0 +1,19 @@
+CREATE PROCEDURE [dolar_lucas_fb_lima].[procedure]
+AS
+BEGIN
+
+TRUNCATE TABLE [dolar_lucas_fb_lima].[dolar_final_lucas_fb_lima]
+INSERT INTO [dolar_lucas_fb_lima].[dolar_final_lucas_fb_lima] (cotacaoCompra, cotacaoVenda, dataHoraCotacao)
+	SELECT 
+	REPLACE (cotacaoCompra, ',','.') AS FLOAT, 
+	REPLACE (cotacaoVenda, ',','.') AS FLOAT, 
+	dataHoraCotacao AS DATETIME
+	FROM [dolar_lucas_fb_lima].[dolar_Stage_lucas_fb_lima]
+
+
+TRUNCATE TABLE [dolar_lucas_fb_lima].[dolar_Stage_lucas_fb_lima]
+
+
+END
+
+
