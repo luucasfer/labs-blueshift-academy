@@ -1,6 +1,6 @@
 #BIBLIOTECAS
 from colorama import Fore, Back, Style
-
+from time import sleep
 
 #VARIÁVEIS PARA RELATÓRIO
 assentos_ocupados = []
@@ -46,56 +46,68 @@ def boas_vindas():
 
 #FUNÇÃO OPÇÕES
 def opcoes():
+    print(f'{Fore.BLACK}{Back.LIGHTYELLOW_EX}** MENU PRINCIPAL ** {Style.RESET_ALL}')
     print(f'{Fore.BLACK}{Back.LIGHTYELLOW_EX}[1] RESERVAR ASSENTO {Style.RESET_ALL}')
     print(f'{Fore.BLACK}{Back.LIGHTYELLOW_EX}[2] EMITIR RELATÓRIO {Style.RESET_ALL}')
     print(f'{Fore.BLACK}{Back.LIGHTYELLOW_EX}[3] SAIR             {Style.RESET_ALL} \n')
     opcao_usuario = input('ESCOLHA A OPÇÃO DESEJADA (1, 2 ou 3):')
-
-    if opcao_usuario == "1":
-        colorir()
-        reserva_assento()
-    elif opcao_usuario == "2":
-        relatorio()
-        print(f'{Fore.BLACK}{Back.GREEN}O Relatório foi emitido!{Style.RESET_ALL} \n')
-        opcoes()
-    elif opcao_usuario == "3":
-        print(f'{Fore.BLACK}{Back.GREEN}OBRIGADO, Volte Sempre!{Style.RESET_ALL} \n')
-        quit()
-    elif opcao_usuario != "1" or "2" or "3":
+    
+    try:
+        opcao_usuario = int(opcao_usuario)
+        if opcao_usuario == 1:
+            colorir()
+            reserva_assento()
+        elif opcao_usuario == 2:
+            relatorio()
+            print(f'{Fore.BLACK}{Back.GREEN}O Relatório foi emitido!{Style.RESET_ALL} \n')
+            opcoes()
+        elif opcao_usuario == 3:
+            print(f'{Fore.BLACK}{Back.GREEN}OBRIGADO, Volte Sempre!{Style.RESET_ALL} \n')
+            quit()
+        elif opcao_usuario != 1 or 2 or 3:
+            print(f'{Fore.BLACK}{Back.LIGHTRED_EX}Opção inválida, tente novamente!{Style.RESET_ALL} \n')
+            opcoes()
+    except:
         print(f'{Fore.BLACK}{Back.LIGHTRED_EX}Opção inválida, tente novamente!{Style.RESET_ALL} \n')
         opcoes()
 
 
+
 #FUNÇÃO RESERVAR ASSENTO
 def reserva_assento():
-    #global assentos_ocupados
-    while True:
-        entrada = int(input("ESCOLHA O NÚMERO DO ASSENTO QUE DESEJA: "))
-        tamanho_matriz = (len(onibus) * len(onibus[0]))  #Multiplica a quantidade de linhas e colunas da matriz
-        if (entrada > 0 and entrada <= tamanho_matriz) and (entrada not in corredor) and (entrada not in assentos_ocupados):
-            print(f'{Fore.BLACK}{Back.GREEN}O assento {entrada} foi reservado! {Style.RESET_ALL} \n')
-            assentos_ocupados.append(entrada)
-            colorir()
-            novos_assentos()
-        elif (entrada > 0 and entrada <= tamanho_matriz) and (entrada not in corredor) and (entrada in assentos_ocupados):
-            print(f'{Fore.BLACK}{Back.LIGHTRED_EX}O assento {entrada} já está reservado {Style.RESET_ALL} \n')
-        else:
-            print(f'{Fore.BLACK}{Back.LIGHTRED_EX}{entrada} não é um número válido! {Style.RESET_ALL} \n')
-            reserva_assento()
+    try:
+        while True:
+            entrada = int(input("ESCOLHA O NÚMERO DO ASSENTO QUE DESEJA: "))
+            tamanho_matriz = (len(onibus) * len(onibus[0]))  #Multiplica a quantidade de linhas e colunas da matriz
+            if (entrada > 0 and entrada <= tamanho_matriz) and (entrada not in corredor) and (entrada not in assentos_ocupados):
+                print(f'{Fore.BLACK}{Back.GREEN}O assento {entrada} foi reservado! {Style.RESET_ALL} \n')
+                assentos_ocupados.append(entrada)
+                colorir()
+                novos_assentos()
+            elif (entrada > 0 and entrada <= tamanho_matriz) and (entrada not in corredor) and (entrada in assentos_ocupados):
+                print(f'{Fore.BLACK}{Back.LIGHTRED_EX}O assento {entrada} já está reservado {Style.RESET_ALL} \n')
+            else:
+                print(f'{Fore.BLACK}{Back.LIGHTRED_EX}{entrada} não é um número válido! {Style.RESET_ALL} \n')
+                reserva_assento()
+    except:
+        print(ValueError(f'{Fore.BLACK}{Back.LIGHTRED_EX} Não é um número, tente novamente! {Style.RESET_ALL} \n'))
+        reserva_assento()
 
 
 #FUNÇÃO RESERVAR MAIS ASSENTOS
 def novos_assentos():
-    while True:
-        novo_assento = str(input("\n DESEJA RESERVAR MAIS UM ASSENTO? (S/N) "))
-        if novo_assento == "S" or novo_assento == "s":
-            reserva_assento()
-        elif novo_assento == "N" or novo_assento == "n":
-            opcoes()
-        elif novo_assento != "S" or "s" or "N" or "n":
-            print(f'{Fore.BLACK}{Back.LIGHTRED_EX}Opção inválida!{Style.RESET_ALL} \n')
-            novos_assentos()
-
+    try:
+        while True:
+            novo_assento = str(input("\n DESEJA RESERVAR MAIS UM ASSENTO? (S/N) "))
+            if novo_assento == "S" or novo_assento == "s":
+                reserva_assento()
+            elif novo_assento == "N" or novo_assento == "n":
+                opcoes()
+            elif novo_assento != "S" or "s" or "N" or "n":
+                print(f'{Fore.BLACK}{Back.LIGHTRED_EX}Opção inválida!{Style.RESET_ALL} \n')
+                novos_assentos()
+    except:
+        novos_assentos()
 
 
 
