@@ -7,6 +7,15 @@ assentos_ocupados = []
 corredor = []
 
 
+#FUNÇÃO DE LOADING
+def loading():
+    for _ in range(4):
+        for x in range (3): # three dots
+            string = "Carregando" + "." * x + "   "
+            print (string, end="\r")
+            sleep(0.2)
+
+
 #FUNÇÃO DE DECORAÇÃO
 def firulas():
     print(f'{Fore.BLACK}{Back.GREEN}={Style.RESET_ALL}'*21)
@@ -55,13 +64,16 @@ def opcoes():
     try:
         opcao_usuario = int(opcao_usuario)
         if opcao_usuario == 1:
+            loading()
             colorir()
             reserva_assento()
         elif opcao_usuario == 2:
+            loading()
             relatorio()
             print(f'{Fore.BLACK}{Back.GREEN}O Relatório foi emitido!{Style.RESET_ALL} \n')
             opcoes()
         elif opcao_usuario == 3:
+
             print(f'{Fore.BLACK}{Back.GREEN}OBRIGADO, Volte Sempre!{Style.RESET_ALL} \n')
             quit()
         elif opcao_usuario != 1 or 2 or 3:
@@ -100,8 +112,10 @@ def novos_assentos():
         while True:
             novo_assento = str(input("\n DESEJA RESERVAR MAIS UM ASSENTO? (S/N) "))
             if novo_assento == "S" or novo_assento == "s":
+                loading()
                 reserva_assento()
             elif novo_assento == "N" or novo_assento == "n":
+                loading()
                 opcoes()
             elif novo_assento != "S" or "s" or "N" or "n":
                 print(f'{Fore.BLACK}{Back.LIGHTRED_EX}Opção inválida!{Style.RESET_ALL} \n')
@@ -149,12 +163,13 @@ def colorir():
         print()
 
 
-onibus = criar_matriz(8, 5)
-tamanho_matriz = (len(onibus) * len(onibus[0]))
-assentos_livres = list(range(1,tamanho_matriz + 1))
-assentos_corredor(onibus)
-boas_vindas()
-opcoes()
+if __name__== "__main__":
+    onibus = criar_matriz(8, 5)
+    tamanho_matriz = (len(onibus) * len(onibus[0]))
+    assentos_livres = list(range(1,tamanho_matriz + 1))
+    assentos_corredor(onibus)
+    boas_vindas()
+    opcoes()
 
 
 
